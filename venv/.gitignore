@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 
-# Virtual Environment
+# Virtual environments
 venv/
 .venv/
 env/
@@ -13,12 +13,12 @@ env/
 # PyCharm
 .idea/
 
-# Environment Variables
+# Environment variables
 .env
 
-# SQLite Database
+# SQLite database
 database/interviews.db
 
-# OS Files
+# OS files
 .DS_Store
 Thumbs.db
