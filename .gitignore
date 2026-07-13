@@ -2,20 +2,22 @@
 __pycache__/
 *.py[cod]
 
-# Virtual environments
+# Virtual environment
 venv/
 .venv/
 env/
 
-# IDEs
+# VS Code
 .vscode/
-.idea/
 
-# Environment variables
-.env
+# PyCharm
+.idea/
 
 # SQLite database
 database/interviews.db
+
+# Environment variables
+.env
 
 # OS files
 .DS_Store
