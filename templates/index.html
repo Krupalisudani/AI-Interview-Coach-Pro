@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="glass-card main-form-card">
+        <h1>Ace Your Next Interview</h1>
+        <p>Real-time AI evaluation, instant feedback, and professional analytics.</p>
+        
+        <form id="setup-form" class="setup-form">
+            <div class="form-group">
+                <label for="candidate-name">Full Name</label>
+                <input type="text" id="candidate-name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="interview-role">Select Role</label>
+                <select id="interview-role" required>
+                    <option value="" disabled selected>Choose a role...</option>
+                    <option value="Python Developer">Python Developer</option>
+                    <option value="Java Developer">Java Developer</option>
+                    <option value="AI ML Engineer">AI ML Engineer</option>
+                    <option value="Data Analyst">Data Analyst</option>
+                    <option value="Web Developer">Web Developer</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-large">Start Interview</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

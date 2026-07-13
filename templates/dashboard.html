@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div class="header-text">
+        <h1>Interview Dashboard</h1>
+        <p>Candidate: <strong>{{ interview.name }}</strong> | Role: <strong>{{ interview.role }}</strong></p>
+    </div>
+    <div class="header-actions">
+        <a href="/report/{{ interview.id }}" class="btn btn-primary">Download PDF</a>
+        <button id="btn-toggle-transcript" class="btn btn-secondary">View Transcript</button>
+    </div>
+</div>
+
+<script type="application/json" id="transcript-data">
+    {{ interview.transcript | safe }}
+</script>
+
+<div id="dashboard-view">
+    <div class="stats-grid">
+        <div class="glass-card stat-card">
+            <h3>Overall Score</h3>
+            <div class="stat-value">{{ interview.overall_score }}%</div>
+        </div>
+        <div class="glass-card stat-card">
+            <h3>Avg Technical</h3>
+            <div class="stat-value" id="avg-tech">--%</div>
+        </div>
+        <div class="glass-card stat-card">
+            <h3>Avg Communication</h3>
+            <div class="stat-value" id="avg-comm">--%</div>
+        </div>
+        <div class="glass-card stat-card">
+            <h3>Total Questions</h3>
+            <div class="stat-value">15</div>
+        </div>
+    </div>
+
+    <div class="charts-grid">
+        <div class="glass-card chart-container">
+            <h3>Performance Breakdown</h3>
+            <canvas id="barChart"></canvas>
+        </div>
+        <div class="glass-card chart-container">
+            <h3>Skill Balance</h3>
+            <canvas id="radarChart"></canvas>
+        </div>
+        <div class="glass-card chart-container">
+            <h3>Overall Confidence</h3>
+            <canvas id="gaugeChart"></canvas>
+        </div>
+        <div class="glass-card chart-container">
+            <h3>Keyword Analysis</h3>
+            <canvas id="pieChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<div id="transcript-view" style="display: none;">
+    {% include 'report.html' %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+{% endblock %}

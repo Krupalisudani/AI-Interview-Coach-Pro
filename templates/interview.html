@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="interview-layout">
+    <div class="main-panel glass-card">
+        <div class="interview-header">
+            <div class="progress-container">
+                <div class="progress-info">
+                    <span id="question-counter">Question 1 / 15</span>
+                    <span id="question-category" class="badge badge-easy">Easy</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <span class="timer-icon">⏱️</span>
+                <span id="timer">00:00</span>
+            </div>
+        </div>
+
+        <div class="question-container">
+            <h2 id="question-text">Loading question...</h2>
+        </div>
+
+        <div class="answer-container">
+            <textarea id="answer-input" placeholder="Type your answer here..." rows="8"></textarea>
+        </div>
+
+        <div class="action-buttons">
+            <button id="btn-prev" class="btn btn-secondary" disabled>Previous</button>
+            <button id="btn-eval" class="btn btn-primary">Evaluate Answer</button>
+            <button id="btn-next" class="btn btn-primary" style="display: none;">Next Question</button>
+            <button id="btn-finish" class="btn btn-success" style="display: none;">Finish Interview</button>
+        </div>
+    </div>
+
+    <div class="sidebar-panel glass-card">
+        <h3>Live Evaluation</h3>
+        
+        <div class="score-cards">
+            <div class="score-card">
+                <h4>Technical</h4>
+                <div class="score-circle">
+                    <span id="tech-score">--</span>
+                </div>
+            </div>
+            <div class="score-card">
+                <h4>Communication</h4>
+                <div class="score-circle">
+                    <span id="comm-score">--</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="feedback-section">
+            <div class="feedback-item">
+                <span class="icon success">✓</span>
+                <div>
+                    <h5>Strengths</h5>
+                    <p id="eval-strengths">Awaiting evaluation...</p>
+                </div>
+            </div>
+            <div class="feedback-item">
+                <span class="icon warning">⚠</span>
+                <div>
+                    <h5>Weaknesses</h5>
+                    <p id="eval-weaknesses">Awaiting evaluation...</p>
+                </div>
+            </div>
+            <div class="feedback-item">
+                <span class="icon info">ℹ</span>
+                <div>
+                    <h5>Suggestions</h5>
+                    <p id="eval-suggestions">Awaiting evaluation...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="keywords-section">
+            <h5>Missing Keywords</h5>
+            <div id="eval-keywords" class="keyword-tags">
+                <span class="tag placeholder">None yet</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

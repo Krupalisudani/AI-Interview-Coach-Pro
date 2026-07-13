@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="glass-card history-container">
+    <h2>Interview History</h2>
+    <p>Review past sessions and performance analytics.</p>
+    
+    <div class="table-responsive">
+        <table class="modern-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Candidate</th>
+                    <th>Role</th>
+                    <th>Date</th>
+                    <th>Score</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in interviews %}
+                <tr>
+                    <td>#{{ row.id }}</td>
+                    <td><strong>{{ row.name }}</strong></td>
+                    <td><span class="badge badge-role">{{ row.role }}</span></td>
+                    <td>{{ row.timestamp[:16] }}</td>
+                    <td>
+                        <div class="score-pill {% if row.overall_score >= 80 %}high{% elif row.overall_score >= 60 %}med{% else %}low{% endif %}">
+                            {{ row.overall_score }}%
+                        </div>
+                    </td>
+                    <td>
+                        <a href="/dashboard/{{ row.id }}" class="btn btn-sm btn-primary">Dashboard</a>
+                        <a href="/report/{{ row.id }}" class="btn btn-sm btn-secondary">PDF</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" style="text-align: center;">No interviews found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
